@@ -2,6 +2,17 @@ import express from 'express';
 import products from './Data/products';
 import { Request, Response } from 'express';
 
+type productsProps = {
+  _id: string
+    name: string
+    image: string
+    rating: number
+    numReviews: number
+    price: number
+    description: string
+    countInStock: number
+}
+
 const app = express();
 
 app.get('/', (req: Request, res: Response) =>{
@@ -14,7 +25,7 @@ app.get('/api/products', (req: Request, res: Response) =>{
 
 app.get('/api/products/:id', (req: Request, res: Response) =>{
   console.log({products})
-  const product = products.find((p: any) => p._id === req.params.id)
+  const product = products.find((p: productsProps) => p._id === req.params.id)
   res.json(product)
 })
 
