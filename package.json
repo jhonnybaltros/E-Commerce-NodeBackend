@@ -4,16 +4,24 @@
   "description": "MERN Shopping Cart",
   "main": "server.ts",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "data:import": "ts-node ./src/seeder.ts",
+    "data:destroy": "ts-node ./src/seeder.ts -d"
   },
   "author": "Jhonny Baltros",
   "license": "ISC",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.1.4",
     "tslint": "^6.1.3",
     "typescript": "^4.4.3"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/node": "^16.10.1",
     "nodemon": "^2.0.13",
