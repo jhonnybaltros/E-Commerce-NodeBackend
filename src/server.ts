@@ -1,9 +1,11 @@
-import express, { NextFunction } from "express";
+import express from "express";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
 
 import productRoutes from "./routes/productRoutes";
+import userRoutes from "./routes/userRoutes";
+
 import { errorHandler, notFound } from "./middlewares/errorMiddleware";
 
 dotenv.config();
@@ -11,11 +13,14 @@ connectDB();
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello Mage!");
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 app.use(notFound);
 
